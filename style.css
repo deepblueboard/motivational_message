@@ -164,8 +164,8 @@
   border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
 }
 
-.pacifico-regular {
-  font-family: "Pacifico", cursive;
+.story-script-regular {
+  font-family: "Story Script", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -190,9 +190,10 @@ body {
 }
 
 h1 {
-  font-family: "Pacifico", cursive;
+  font-family: "Story Script", cursive;
   text-align: center;
   color: white;
+  font-size: 3rem;
 }
 
 p {
