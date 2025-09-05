@@ -11,8 +11,7 @@
   font-style: normal;
 }
 
-
-.funnel-sans> {
+.funnel-sans > {
   font-family: "Funnel Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: weight;
@@ -31,10 +30,11 @@ body {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  width: 232px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  gap: 16px; /* espace fixe, pas de shrink */
+  width: auto; /* laisse la taille s’ajuster */
 }
 
 .face {
@@ -53,19 +53,19 @@ body {
 
 @keyframes kiss {
   40% {
-    transform: translate(0px);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translate(30px) rotate(20deg);
+    transform: translate3d(30px, 0, 0) rotate(20deg);
   }
   60% {
-    transform: translate(-33px);
+    transform: translate3d(-33px, 0, 0);
   }
   67% {
-    transform: translate(-33px);
+    transform: translate3d(-33px, 0, 0);
   }
   77% {
-    transform: translate(0px);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -207,6 +207,9 @@ body {
   display: inline-block;
   vertical-align: top;
   position: relative;
+  box-sizing: border-box; /* largeur/hauteur incluent la bordure */
+  flex: 0 0 auto; /* empêche le rétrécissement dans le flex */
+  will-change: transform; /* évite les déformations pendant l’anim */
 }
 
 #r-ball {
@@ -227,43 +230,43 @@ body {
 
 @keyframes close {
   0% {
-    transform: translate(0);
+    transform: translate3d(0, 0, 0);
   }
   20% {
-    transform: translate(20px);
+    transform: translate3d(20px, 0, 0);
   }
   35% {
-    transform: translate(20px);
+    transform: translate3d(20px, 0, 0);
   }
   55% {
-    transform: translate(0px);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translate(0px);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes face {
   0% {
-    transform: translate(0) rotate(0);
+    transform: translate3d(0, 0, 0) rotate(0);
   }
   10% {
-    transform: translate(0) rotate(0);
+    transform: translate3d(0, 0, 0) rotate(0);
   }
   20% {
-    transform: translate(5px) rotate(-2deg);
+    transform: translate3d(5px, 0, 0) rotate(-2deg);
   }
   28% {
-    transform: translate(0) rotate(0);
+    transform: translate3d(0, 0, 0) rotate(0);
   }
   35% {
-    transform: translate(5px) rotate(-2deg);
+    transform: translate3d(5px, 0, 0) rotate(-2deg);
   }
   50% {
-    transform: translate(0) rotate(0);
+    transform: translate3d(0, 0, 0) rotate(0);
   }
   100% {
-    transform: translate(0) rotate(0);
+    transform: translate3d(0, 0, 0) rotate(0);
   }
 }
 
@@ -279,45 +282,48 @@ p {
   margin: 1.5rem;
 }
 
-.btn{
+.btn {
   --button-size: 1.5rem;
-  --default-color:#333;
-  --active-color:red;
-  --inverse-color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:var(--button-size);
-  height:var(--button-size);
-  border: calc(var(--button-size)*0.05) solid var(--default-color);
+  --default-color: #333;
+  --active-color: red;
+  --inverse-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--button-size);
+  height: var(--button-size);
+  border: calc(var(--button-size) * 0.05) solid var(--default-color);
   border-radius: var(--button-size);
   background: var(--inverse-color);
-  overflow:hidden;
+  overflow: hidden;
 }
 
-.heart-icon{
-  width: calc(var(--button-size)*0.6);
-  height: calc(var(--button-size)*0.6);
-  margin-top: calc(var(--button-size)*0.1);
-  fill: black;                /* remplissage noir */
+.heart-icon {
+  width: calc(var(--button-size) * 0.6);
+  height: calc(var(--button-size) * 0.6);
+  margin-top: calc(var(--button-size) * 0.1);
+  fill: black; /* remplissage noir */
   stroke: var(--default-color);
   stroke-width: 2;
   vector-effect: non-scaling-stroke; /* contour net au redimensionnement */
   transition: transform 0.2s ease, stroke 0.2s ease, fill 0.2s ease;
 }
 
-.btn:hover{ cursor:pointer; }
-.btn:hover .heart-icon{transform: scale(1.1); }
+.btn:hover {
+  cursor: pointer;
+}
+.btn:hover .heart-icon {
+  transform: scale(1.1);
+}
 
-.btn.active{
+.btn.active {
   background: var(--active-color);
   border-color: var(--active-color);
 }
-.btn.active .heart-icon{
+.btn.active .heart-icon {
   stroke: var(--inverse-color);
   fill: var(--inverse-color); /* cœur rempli quand actif */
 }
-
 
 main {
   display: flex;
@@ -326,20 +332,20 @@ main {
   margin-top: 14rem;
 }
 
- .container2, .container3 {
+.container2,
+.container3 {
   margin: 0.5rem;
   padding: 0.2rem;
   display: none;
   font-family: "Funel Sans", sans-serif;
 }
 
-.container2{
+.container2 {
   text-align: center;
 }
 
-.container3{
+.container3 {
   margin-bottom: 2rem;
   font-style: italic;
   margin-left: 8rem;
 }
-
