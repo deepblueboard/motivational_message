@@ -24,17 +24,14 @@ body {
 }
 
 .container {
-  position: absolute;
-  top: 27%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  position: relative;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 16px;
+  width: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 16px; /* espace fixe, pas de shrink */
-  width: auto; /* laisse la taille s’ajuster */
 }
 
 .face {
@@ -193,10 +190,20 @@ body {
   border-bottom: 5px solid;
   position: absolute;
   bottom: -5px;
-  transform: translate(3px);
   left: 0;
   right: 0;
   margin: auto;
+  transform: none;
+  left: 3px; /* même décalage, sans transform */
+}
+
+.eye,
+.mouth {
+  border-color: #000; /* couleur nette explicite */
+  backface-visibility: hidden; /* lisse le rendu sur iOS */
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0); /* force le compositing GPU */
+  will-change: transform;
 }
 
 .ball {
@@ -210,6 +217,8 @@ body {
   box-sizing: border-box; /* largeur/hauteur incluent la bordure */
   flex: 0 0 auto; /* empêche le rétrécissement dans le flex */
   will-change: transform; /* évite les déformations pendant l’anim */
+  background-color: #fff; /* fond plein pour l’AA des traits noirs */
+  box-sizing: border-box;
 }
 
 #r-ball {
@@ -268,6 +277,13 @@ body {
   100% {
     transform: translate3d(0, 0, 0) rotate(0);
   }
+}
+
+.animation {
+  position: relative; /* référence de positionnement locale */
+  display: flex;
+  justify-content: center; /* centre horizontalement */
+  padding: 24px 0; /* ajuste la marge verticale au besoin */
 }
 
 h1 {
@@ -329,7 +345,7 @@ main {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 14rem;
+  margin-top: 1rem;
 }
 
 .container2,
