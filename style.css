@@ -306,8 +306,8 @@ p {
   transition: transform 0.2s ease, stroke 0.2s ease, fill 0.2s ease;
 }
 
-.btn:hover{ border-color: var(--active-color); cursor:pointer; }
-.btn:hover .heart-icon{ stroke: var(--active-color); transform: scale(1.1); }
+.btn:hover{ cursor:pointer; }
+.btn:hover .heart-icon{transform: scale(1.1); }
 
 .btn.active{
   background: var(--active-color);
@@ -340,8 +340,6 @@ main {
 .container3{
   margin-bottom: 2rem;
   font-style: italic;
-  text-align: right;
-  align-self: flex-end;
-  margin-right: 3rem;
+  margin-left: 8rem;
 }
 
