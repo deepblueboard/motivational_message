@@ -6,7 +6,7 @@ const quotesLove = [
   { author: "Your future husband", citation: "A day, we will have 'bébé' " },
   {
     author: "Your fiancé",
-    citation: "Can you imagine our life in french campain ? ",
+    citation: "Can you imagine our life in french countryside ? ",
   },
 ];
 
